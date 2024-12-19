@@ -6,10 +6,7 @@ This repository contains solutions for the **Advent of Code 2024** puzzles, impl
 
 - [About](#about)
 - [Structure](#structure)
-- [Requirements](#requirements)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## About
 
@@ -24,7 +21,7 @@ The repository is organized as follows:
 ```
 .
 ├── day01
-│   ├── input.txt       # Input data for Day 1
+│   ├── real_input.txt       # Input data for Day 1
 │   ├── part1.py        # Solution for Day 1, Part 1
 │   ├── part2.py        # Solution for Day 1, Part 2
 │   └── README.md       # Description of the Day 1 challenge
@@ -38,22 +35,10 @@ The repository is organized as follows:
 ```
 
 Each `dayXX` folder contains:
-- `input.txt`: Puzzle input for the day.
+- `real_input.txt`: Puzzle input for the day.
 - `part1.py`: Solution for the first part of the puzzle.
 - `part2.py`: Solution for the second part of the puzzle.
 - `README.md`: Description of the puzzle and notes on the solution.
-
-## Requirements
-
-Ensure you have Python 3.8 or higher installed. You can manage dependencies using `pip`.
-
-To install necessary packages:
-
-```bash
-pip install -r requirements.txt
-```
-
-(If applicable, a `requirements.txt` file should be included for any libraries used.)
 
 ## Usage
 
@@ -64,13 +49,5 @@ pip install -r requirements.txt
    python part1.py
    python part2.py
    ```
-3. Replace the contents of `input.txt` with your personal puzzle input from the Advent of Code website.
-
-## Contributing
-
-Feel free to fork this repository, solve the puzzles, and submit a pull request with your solutions or optimizations. Collaboration is encouraged, but please avoid posting solutions publicly before the puzzles are unlocked each day.
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+3. Replace the contents of `real_input.txt` with your personal puzzle input from the Advent of Code website.
 
