@@ -17,23 +17,11 @@ def pt1(matrix):
     """
     total = 0
     for report in matrix:
-        if is_safe(report, removal_allowed=False):
+        if is_safe(report):
             total += 1
     return total
 
-def pt2(matrix):
-    """
-    Determine how many reports are safe, allowing the removal of one level.
-    A report is safe if, after removing at most one level, it is strictly increasing or decreasing, 
-    with each step within 1-3.
-    """
-    total = 0
-    for report in matrix:
-        if is_safe(report, removal_allowed=True):
-            total += 1
-    return total
-
-def is_safe(report, removal_allowed):
+def is_safe(report):
     """
     Check if a report is safe.
     A report is safe if it is strictly increasing or decreasing with steps within 1-3.
@@ -57,14 +45,6 @@ def is_safe(report, removal_allowed):
     if check_increasing(report) or check_decreasing(report):
         return True
     
-    # If removal is allowed, try removing one level and check again
-    if removal_allowed:
-        for i in range(len(report)):
-            # Try removing the current level and check if the report becomes safe
-            modified_report = report[:i] + report[i+1:]
-            if check_increasing(modified_report) or check_decreasing(modified_report):
-                return True
-    
     # If no condition holds, return False
     return False
 
@@ -77,7 +57,5 @@ if __name__ == '__main__':
     matrix = parse_input(args.filename)
 
     part1_answer = pt1(matrix)
-    part2_answer = pt2(matrix)
 
     print(f"Part 1: total = {part1_answer}")
-    print(f"Part 2: total = {part2_answer}")
