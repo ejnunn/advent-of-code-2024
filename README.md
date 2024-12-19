@@ -21,12 +21,12 @@ The repository is organized as follows:
 ```
 .
 ├── day01
-│   ├── real_input.txt       # Input data for Day 1
+│   ├── real_input.txt  # Input data for Day 1
 │   ├── part1.py        # Solution for Day 1, Part 1
 │   ├── part2.py        # Solution for Day 1, Part 2
 │   └── README.md       # Description of the Day 1 challenge
 ├── day02
-│   ├── input.txt       # Input data for Day 2
+│   ├── real_input.txt  # Input data for Day 2
 │   ├── part1.py        # Solution for Day 2, Part 1
 │   ├── part2.py        # Solution for Day 2, Part 2
 │   └── README.md       # Description of the Day 2 challenge
