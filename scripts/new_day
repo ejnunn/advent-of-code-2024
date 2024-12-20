@@ -36,7 +36,8 @@ setup_new_day() {
 	# Download the real puzzle input
 	local input_url="https://adventofcode.com/2024/day/${day}/input"
 	echo "Downloading real puzzle from: ${input_url}"
-	curl -o real_input.txt -c "${SESSION_COOKIE}" "${input_url}"
+	echo "SESSION_COOKIE=${SESSION_COOKIE}"
+	curl -o real_input.txt --cookie "${SESSION_COOKIE}" "${input_url}"
 
 	echo "Setup complete for Day ${day}"
 }
