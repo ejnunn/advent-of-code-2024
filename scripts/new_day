@@ -17,17 +17,28 @@ setup_new_day() {
 	cd "$new_day_dir" || exit
 
 	# Create README.md
-	local readme="Day: $day
-
-	## Part 1
-	<Insert details from Advent of Code webpage>
-
+	local readme="Day: $day\\n
+	\\n
+	## Part 1\\n
+	<Insert details from Advent of Code webpage>\\n
+	\\n
 	## Part 2
-	<Insert details from Advent of Code webpage>
-
+	<Insert details from Advent of Code webpage>\\n
+	\\n
 	"
 	echo $readme > README.md
 
+	# Create python script
+	echo "Creating Python scipts for Part 1 and Part 2"
+	touch part1.py
+	touch part2.py
+
+	# Download the real puzzle input
+	local input_url="https://adventofcode.com/2024/day/${day}/input"
+	echo "Downloading real puzzle from: ${input_url}"
+	curl -o real_input.txt -c "${SESSION_COOKIE}" "${input_url}"
+
+	echo "Setup complete for Day ${day}"
 }
 
 # Check if a day number is provided
