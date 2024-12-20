@@ -21,24 +21,21 @@ The repository is organized as follows:
 ```
 .
 ├── day01
-│   ├── real_input.txt  # Input data for Day 1
-│   ├── part1.py        # Solution for Day 1, Part 1
-│   ├── part2.py        # Solution for Day 1, Part 2
-│   └── README.md       # Description of the Day 1 challenge
+│   ├── real_input.txt     # Input data for Day 1
+│   ├── example_input.txt  # Example data for Day 1
+│   ├── part1.py           # Solution for Day 1, Part 1
+│   ├── part2.py           # Solution for Day 1, Part 2
+│   └── README.md          # Description of the Day 1 challenge
 ├── day02
-│   ├── real_input.txt  # Input data for Day 2
-│   ├── part1.py        # Solution for Day 2, Part 1
-│   ├── part2.py        # Solution for Day 2, Part 2
-│   └── README.md       # Description of the Day 2 challenge
+│   ├── real_input.txt     # Input data for Day 2
+│   ├── example_input.txt  # Example data for Day 2
+│   ├── part1.py           # Solution for Day 2, Part 1
+│   ├── part2.py           # Solution for Day 2, Part 2
+│   └── README.md          # Description of the Day 2 challenge
 ...
 └── README.md           # Project overview
 ```
 
-Each `dayXX` folder contains:
-- `real_input.txt`: Puzzle input for the day.
-- `part1.py`: Solution for the first part of the puzzle.
-- `part2.py`: Solution for the second part of the puzzle.
-- `README.md`: Description of the puzzle and notes on the solution.
 
 ## Usage
 
@@ -46,8 +43,8 @@ Each `dayXX` folder contains:
 2. Run the Python scripts:
 
    ```bash
-   python part1.py
-   python part2.py
+   python part1.py real_input.txt
+   python part2.py real_input.txt
    ```
 3. Replace the contents of `real_input.txt` with your personal puzzle input from the Advent of Code website.
 
