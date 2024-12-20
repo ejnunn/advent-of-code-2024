@@ -1,5 +1,6 @@
 import argparse
 from collections import defaultdict
+from itertools import product
 
 def parse_input(filename):
     totals = []
@@ -14,8 +15,40 @@ def parse_input(filename):
             
     return totals, nums
 
-def pt1():
-    return 0
+def generate_operator_combinations(n):
+    """
+    Generate all possible combinations of * and + for n positions.
+    :param n: Number of positions (length of each combination).
+    :return: List of lists containing all combinations of * and +.
+    """
+    operators = ["*", "+"]
+    combinations = list(product(operators, repeat=n))
+    return [list(comb) for comb in combinations]
+
+
+def equation_possibly_true(target, values):
+    operator_combinations = generate_operator_combinations(len(values)-1)
+
+    for combination in operator_combinations:
+        curr_total = values[0]
+        for i in range(len(combination)):
+            if combination[i] == "*":
+                curr_total *= values[i+1]
+            else:
+                curr_total += values[i+1]
+            if curr_total == target:
+                return True
+
+    return False
+
+def pt1(totals, nums):
+    answer = 0
+
+    for total, values in zip(totals, nums):
+        if equation_possibly_true(total, values):
+            answer += total
+
+    return answer
 
 if __name__ == '__main__':
     # Parse command-line arguments
@@ -26,6 +59,6 @@ if __name__ == '__main__':
     # Use the filename argument
     totals, nums = parse_input(args.filename)
 
-    part1_answer = pt1()
+    part1_answer = pt1(totals, nums)
 
     print(f"Part 1: total = {part1_answer}")
