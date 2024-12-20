@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Function to create the new day directory and setup files.
+setup_new_day() {
+	local day=$1
+	local base_dir="../"
+	local new_day_dir="${base_dir}day${day}"
+
+	# Check if the directory already exists
+	if [ -d "$new_day_dir" ]; then
+		echo "Directory $new_day_dir already exists. Please choose a different day."
+		exit 1
+	fi
+
+	# Create the directory
+	mkdir "$new_day_dir"
+	cd "$new_day_dir" || exit
+
+	# Create README.md
+	local readme="Day: $day
+
+	## Part 1
+	<Insert details from Advent of Code webpage>
+
+	## Part 2
+	<Insert details from Advent of Code webpage>
+
+	"
+	echo $readme > README.md
+
+}
+
+# Check if a day number is provided
+if [ -z "$1" ]; then
+	echo "Usage: ./new_day <day_number>"
+fi
+
+setup_new_day "$1"
