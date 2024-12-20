@@ -3,7 +3,7 @@
 # Function to create the new day directory and setup files.
 setup_new_day() {
 	local day=$1
-	local base_dir="../"
+	local base_dir="../2024/"
 	local new_day_dir="${base_dir}day${day}"
 
 	# Check if the directory already exists
@@ -44,6 +44,7 @@ setup_new_day() {
 # Check if a day number is provided
 if [ -z "$1" ]; then
 	echo "Usage: ./new_day <day_number>"
+	exit 1
 fi
 
 setup_new_day "$1"
