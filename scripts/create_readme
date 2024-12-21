@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Check if day number is provided
+if [ -z "$1" ]; then
+  echo "Usage: $0 <day_number>"
+  exit 1
+fi
+
+DAY_NUMBER=$1
+URL="https://adventofcode.com/2024/day/$DAY_NUMBER"
+
+# Fetch the HTML content
+HTML=$(curl -s "$URL")
+
+# Extract content between <article> tags
+ARTICLE=$(echo "$HTML" | tr '\n' ' ' | sed -n 's/.*<article class="day-desc">\(.*\)<\/article>.*/\1/p')
+
+# Extract title from <h2> tag
+TITLE=$(echo "$ARTICLE" | sed -n 's/.*<h2>\(.*\)<\/h2>.*/\1/p')
+
+# Remove the <h2> tag and clean up the rest of the content
+BODY=$(echo "$ARTICLE" | sed -e 's/<h2>.*<\/h2>//' -e 's/<[^>]*>//g' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+
+# Output the results
+echo "Title: $TITLE"
+echo
+echo "Body:"
+echo "$BODY"
+

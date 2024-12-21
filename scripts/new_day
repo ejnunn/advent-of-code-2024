@@ -17,16 +17,12 @@ setup_new_day() {
 	cd "$new_day_dir" || exit
 
 	# Create README.md
-	local readme="Day: $day\\n
-	\\n
-	## Part 1\\n
-	<Insert details from Advent of Code webpage>\\n
-	\\n
-	## Part 2
-	<Insert details from Advent of Code webpage>\\n
-	\\n
-	"
-	echo $readme > README.md
+	echo "Fetching details for Day $day form Avent of Code..."
+	local output=$(../../scripts/create_readme "$day")
+	local title=$(echo "$output" | awk -F 'Title: ' '/Title: /{getline; print}')
+	local body=$(echo "$output" | awk -F 'Body: ' '/Body:/{getline; print}')
+	echo -e "# ${title}\n\n${body}\n" > README.md
+	echo "README.md created with fetched details."
 
 	# Create python script
 	echo "Creating Python scipts for Part 1 and Part 2"
@@ -37,7 +33,7 @@ setup_new_day() {
 	local input_url="https://adventofcode.com/2024/day/${day}/input"
 	echo "Downloading real puzzle from: ${input_url}"
 	echo "SESSION_COOKIE=${SESSION_COOKIE}"
-	curl -o real_input.txt --cookie "${SESSION_COOKIE}" "${input_url}"
+	curl -so real_input.txt --cookie "${SESSION_COOKIE}" "${input_url}"
 
 	echo "Setup complete for Day ${day}"
 }
