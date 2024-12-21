@@ -36,7 +36,11 @@ def equation_possibly_true(target, values):
                 curr_total *= values[i+1]
             else:
                 curr_total += values[i+1]
-            if curr_total == target:
+            # Make sure to only consider a valid solution if all values have been used.
+            # E.g. target:10, values:[3,2,4,1], invalid = 3*2+4 = 10 (1 not used)...valid = 3*2+4*1 = 10
+            if i == len(combination)-1 and curr_total == target:
+                expression = "".join(str(value) + op for value, op in zip(values, combination)) + str(values[-1])
+                print(f"Found a solution: {target} = {expression}")
                 return True
 
     return False
