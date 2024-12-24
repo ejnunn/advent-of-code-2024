@@ -4,9 +4,7 @@ from collections import defaultdict
 
 def parse_input(filename):
     with open(filename, 'r') as file:
-        return file.read().strip()
-    
-    return None
+        return file.read().strip() 
 
 def convert_disk_map_to_block_ids(disk_map):
 	block_ids = []
@@ -14,37 +12,36 @@ def convert_disk_map_to_block_ids(disk_map):
 	curr_id = 0
 	for i, digit in enumerate(disk_map):
 		if i % 2 == 0:
-			block_ids.append(str(curr_id) * int(digit))
+			block_ids.extend([str(curr_id)] * int(digit))
 			curr_id += 1
 		else:
-			block_ids.append("." * int(digit))
+			block_ids.extend(["."] * int(digit))
 
-	return "".join(block_ids)
+	return block_ids
 
 def defrag(block_ids):
-    block_array = list(block_ids)
 
     # Initialize pointers
     left = 0
-    right = len(block_array) - 1
+    right = len(block_ids) - 1
 
     # Move all dots to the right of the digits
     while left < right:
         # Find the next dot on the left
-        while left < right and block_array[left] != ".":
+        while left < right and block_ids[left] != ".":
             left += 1
-        
+
         # Find the next digit on the right
-        while left < right and block_array[right] == ".":
+        while left < right and block_ids[right] == ".":
             right -= 1
-        
+
         # Swap if valid
         if left < right:
-            block_array[left], block_array[right] = block_array[right], block_array[left]
+            block_ids[left], block_ids[right] = block_ids[right], block_ids[left]
             left += 1
             right -= 1
 
-    return "".join(block_array)
+    return block_ids
 
 
 def calculate_checksum(blocks):
@@ -60,7 +57,7 @@ def calculate_checksum(blocks):
 
 def pt1(disk_map):
 	print(f"disk_map = {disk_map}")
-	
+
 	block_ids = convert_disk_map_to_block_ids(disk_map)
 	print(f"block_ids = {block_ids}")
 
