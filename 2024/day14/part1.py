@@ -36,17 +36,17 @@ def simulate_robot(robot, WIDTH, HEIGHT):
 	return px, py
 
 def print_grid(robot_positions):
-	for y in range(HEIGHT):
-		row = [0] * WIDTH
-		for x in range(WIDTH):
-			if x == WIDTH // 2 or y == HEIGHT // 2:
-				row[x] = -1
-			elif (x,y) in robot_positions:
-				row[x] = robot_positions[(x,y)]
-			else:
-				row[x] = 0
+    for y in range(HEIGHT):
+        row = []
+        for x in range(WIDTH):
+            if x == WIDTH // 2 or y == HEIGHT // 2:
+                row.append(' ')  # Grid lines
+            elif (x, y) in robot_positions:
+                row.append(str(robot_positions[(x, y)]))  # Robot count
+            else:
+                row.append('.')  # Empty space
+        print(''.join(row))
 
-		print(row)
 
 def count_robots_in_quadrants(positions):
 	TL, TR, BL, BR = 0, 0, 0, 0
