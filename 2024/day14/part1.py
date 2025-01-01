@@ -4,9 +4,9 @@ from collections import defaultdict
 
 # Global Variables
 SIMULATIONS = 100
-WIDTH = 11
-HEIGHT = 7
-DEBUG = True
+WIDTH = 101
+HEIGHT = 103
+DEBUG = False
 
 
 def parse_input(filename):
@@ -36,7 +36,7 @@ def simulate_robot(robot, WIDTH, HEIGHT):
 	return px, py
 
 def print_grid(robot_positions):
-    for y in range(HEIGHT):
+    for y in range(0, HEIGHT):
         row = []
         for x in range(WIDTH):
             if x == WIDTH // 2 or y == HEIGHT // 2:
