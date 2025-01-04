@@ -26,8 +26,8 @@ setup_new_day() {
 
 	# Create python script
 	echo "Creating Python scipts for Part 1 and Part 2"
-	touch part1.py
-	touch part2.py
+	cp ../../templates/part1.py ./part1.py
+	cp ../../templates/part2.py ./part2.py
 
 	# Download the real puzzle input
 	local input_url="https://adventofcode.com/2024/day/${day}/input"
